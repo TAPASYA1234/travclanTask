@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          check intall
+          check intall of git
         </a>
       </header>
     </div>
