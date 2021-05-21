@@ -1,14 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch,withRouter, Route, Link } from 'react-router-dom';
+import AllCustomers from './components/AllCustomers';
+import CustomerBids from './components/CustomerBids';
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-          
-      </header>
-    </div>
+    <Router>
+
+    <Switch>
+              <Route exact path='/' component={AllCustomers} />
+              <Route exact path='/customer/:id' component={props => (
+                    <CustomerBids {...props} />
+                  )} />
+          </Switch>
+          </Router>
+ //   <div >
+  //   <AllCustomers/>
+   //  <Route path="/customer/:id">
+   //  <CustomerBids />
+   // </Route>
+   // </div>
   );
 }
 

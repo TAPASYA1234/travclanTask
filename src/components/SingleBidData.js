@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import { Link } from 'react-router-dom'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     maxWidth: 500,
     border:3,
-    marginBottom: 4
+    marginBottom: 4,
+    backgroundColor:'yellow'
   },
   image: {
     width: 118,
@@ -29,33 +29,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SingleCustomerCard = ({props})=> {
+const SingleBidData = ({props})=> {
   const classes = useStyles();
 
-  const {firstname,lastname,avatarUrl,email,phone,id} = props;
+  const {amount,carTitle,created} = props;
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container className={classes.box} spacing={2}>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="person profile" src={avatarUrl} />
-            </ButtonBase>
-          </Grid>
+    
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-              <Link to={`/customer/${id}`}  >
+            
                 <Typography gutterBottom variant="subtitle1">
-                  {firstname}{lastname}
+                  {carTitle}
                 </Typography>
-                </Link>
+            
                 <Typography variant="body2" gutterBottom>
-                 Email: {email}
+                 Amount: {amount}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                 Phone: {phone}
+                 Created: {created}
                 </Typography>
               </Grid>
               <Grid item>
@@ -72,4 +68,4 @@ const SingleCustomerCard = ({props})=> {
   );
 }
 
-export default SingleCustomerCard;
+export default SingleBidData;

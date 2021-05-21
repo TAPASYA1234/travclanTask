@@ -1,16 +1,26 @@
 import { Typography } from '@material-ui/core';
 import axios from 'axios';
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import SingleCustomerCard from './SingleCustomerCard';
 
 const AllCustomers = ()=> {
 
     const [allCustomersList, setAllCustomersList] = useState([]);
 
-    axios.get(`https://intense-tor-76305.herokuapp.com/merchants`).then(res =>{
-        console.log(res.data);
-        setAllCustomersList(res.data);
-    })
+    const fetchAllCustomers = ()=>{
+        axios.get(`https://intense-tor-76305.herokuapp.com/merchants`).then(res =>{
+            setAllCustomersList(res.data);
+        }).catch(err => {
+            console.log('failed customer fetched!');
+    
+          });
+    }
+
+    useEffect(() => {
+        fetchAllCustomers()
+    }, [])
+
+    
 
     return(
         <div>
